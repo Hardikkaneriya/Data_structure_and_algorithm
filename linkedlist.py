@@ -1,3 +1,5 @@
+#author : Hardik Kaneriya
+#description : Create a linkedlist using python
 class Node:
     def __init__(self, data= None , next= None):
         self.data  = data
