@@ -1,3 +1,9 @@
+# Author : Hardik kaneriya
+# type : Simple HashMap implementation
+# limitations : this Hashmap implement will not be able to handle Collision 
+# when two keys are having the same hash key and try to store the value of that key in the 
+# same hash location. In that case we need to handle collision problem
+
 class HashMap:
     def __init__(self):
         self.Max = 100
