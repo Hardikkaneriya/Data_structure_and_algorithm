@@ -33,6 +33,12 @@ class BinaryTree:
             self.traverse_preorder(root.left)
             self.traverse_preorder(root.right)
 
+    #postorder traverse (left , right , root)
+    def traverse_postorder(self,root):
+        if root is not None:
+            self.traverse_preorder(root.left)
+            self.traverse_preorder(root.right)
+            print(root.data, end=" ")
 
 if __name__ == "__main__":
     l=[5,4,2,10]
@@ -49,4 +55,5 @@ if __name__ == "__main__":
     l.insert(root, 8)
     l.traverse_inorder(root)
     l.traverse_preorder(root)
+    l.traverse_postorder(root)
 
