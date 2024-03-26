@@ -26,8 +26,16 @@ class BinaryTree:
             print(root.data , end =" ")
             self.traverse_inorder(root.right)
 
+    #preorder traverse (root , left , right)
+    def traverse_preorder(self,root):
+        if root is not None:
+            print(root.data, end=" ")
+            self.traverse_preorder(root.left)
+            self.traverse_preorder(root.right)
+
 
 if __name__ == "__main__":
+    l=[5,4,2,10]
     l= BinaryTree()
     root=l.createNode(5)
     l.insert(root, 2)
@@ -40,4 +48,5 @@ if __name__ == "__main__":
     l.insert(root, 6)
     l.insert(root, 8)
     l.traverse_inorder(root)
+    l.traverse_preorder(root)
 
