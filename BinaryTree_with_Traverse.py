@@ -55,6 +55,27 @@ class BinaryTree:
                 q.append(root.left)
             if root.right is not None:
                 q.append(root.right)
+
+    #check if given tree is binary search tree or not
+    # binary serarch tree should have only two child node (left and right)
+    # binary serarch tree should have left < root < right condition
+    # if that is not matching then it is just a binary tree not binary search tree
+    
+    #logic : just create inorder traverse and it will sort the array and then check if any element is smaller than 
+    #previous element or not. if yes then False otherwise it is BST
+    def checkIfBst(self,root):
+        values=[]
+        def inorder_traverse(root,values):
+            if root is None:
+                return
+            self.traverse_inorder(root.left)
+            values.append(root.data)
+            self.traverse_inorder(root.right)
+        inorder_traverse(root,values)
+        for i in range(len(values)-1):
+            if values[i] >= values[i+1]:
+                return False
+        return True
     
     #this code is not working for this class it is 
     #implemented for another leetcode problem for understanding
@@ -97,4 +118,5 @@ if __name__ == "__main__":
     l.traverse_postorder(root)
     print(l.height(root))
     print(l.levelOrder(root))
+    print(l.checkIfBst(root))
 
