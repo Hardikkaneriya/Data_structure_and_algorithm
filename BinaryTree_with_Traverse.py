@@ -44,6 +44,20 @@ class BinaryTree:
             return -1
         return max(self.height(root.left),self.height(root.right)) + 1
 
+    #this function will print all nodes at base level 
+    def levelOrder(self, root):
+        q=[]
+        q.append(root)
+        while len(q) != 0 :
+            root = q.pop(0)
+            print(root.data , end = " ")
+            if root.left is not None:
+                q.append(root.left)
+            if root.right is not None:
+                q.append(root.right)
+
+
+
 if __name__ == "__main__":
     l=[5,4,2,10]
     l= BinaryTree()
@@ -61,4 +75,5 @@ if __name__ == "__main__":
     l.traverse_preorder(root)
     l.traverse_postorder(root)
     print(l.height(root))
+    print(l.levelOrder(root))
 
