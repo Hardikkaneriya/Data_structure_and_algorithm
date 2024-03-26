@@ -55,6 +55,27 @@ class BinaryTree:
                 q.append(root.left)
             if root.right is not None:
                 q.append(root.right)
+    
+    #this code is not working for this class it is 
+    #implemented for another leetcode problem for understanding
+    def topView(self,root):
+        q=[]
+        dic={}
+        root.level = 0
+        q.append(root)
+        while len(q) != 0 :
+            root = q.pop(0)
+            if root.level not in d:
+                d[root.level] = root.data
+            if root.left is not None:
+                q.append(root.left)
+                root.left.level=root.level - 1
+            if root.right is not None:
+                q.append(root.right)
+                root.right.level = root.right + 1
+        for i in sorted(dic):
+            print(dic[i] , end=' ')
+            
 
 
 
