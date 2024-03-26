@@ -6,8 +6,7 @@ class Node:
 
 class BinaryTree:    
     def createNode(self,data):
-        return Node(data)
-        
+        return Node(data)        
     
     def insert(self, node , data):
         if node is None:
@@ -40,6 +39,11 @@ class BinaryTree:
             self.traverse_preorder(root.right)
             print(root.data, end=" ")
 
+    def height(self, root):
+        if root is None:
+            return -1
+        return max(self.height(root.left),self.height(root.right)) + 1
+
 if __name__ == "__main__":
     l=[5,4,2,10]
     l= BinaryTree()
@@ -56,4 +60,5 @@ if __name__ == "__main__":
     l.traverse_inorder(root)
     l.traverse_preorder(root)
     l.traverse_postorder(root)
+    print(l.height(root))
 
