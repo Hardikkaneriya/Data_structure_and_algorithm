@@ -59,21 +59,23 @@ def bfs_itr(graph,start):
 
 bfs_itr(graph,10)
 
-
+# ========================================= Leetcode Problems ==================================
+#===============================================================================================
 # code to check if given graph has a path from start to end for a given path or not
 graph = { 
     100: [10],
     10:[20],
     20:[30],
     30:[40,60,70],
-    40:[50],
+    40:[500,50],
     50:[60],
     60:[],
     70:[],
-    500:[40]
+    500:[]
 }
 
-def path_or_not(graph,start,end):
+#using DFS
+def path_or_not_dfs(graph,start,end):
     stack=[start]
     
     while stack:
@@ -82,7 +84,18 @@ def path_or_not(graph,start,end):
             if i == end :
                 return True
             stack.append(i)
-            print(stack)
     return False
 
-path_or_not(graph,100,500)
+#using BFS approach
+def path_or_not_bfs(graph,start,end):
+    queue=[start]
+    while queue:
+        cur= queue.pop()
+        if cur == end:
+            return True
+        for i in graph[cur]:
+            queue.insert(0,i)
+    return False
+
+print(path_or_not_dfs(graph,100,500))
+print(path_or_not_bfs(graph,100,500))
