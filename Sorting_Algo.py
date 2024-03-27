@@ -47,54 +47,39 @@ quick_sort(l)
 ## time complexity = O(nlog(n))
 
 
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return
+def merge_sort(a):
+    if len(a) <= 1:
+        return a
+    mid = len(a) // 2
+    left= a[:mid]
+    right = a[mid:]
+    left= merge_sort(left)
+    right= merge_sort(right)
 
-    mid = len(arr)//2
+    return merge_sort_two_sorted_lists(left, right)
+    
 
-    left = arr[:mid]
-    right = arr[mid:]
+def merge_sort_two_sorted_lists(l,g):
+    sorted_list=[]
+    left = len(l)
+    right = len(g)
 
-    merge_sort(left)
-    merge_sort(right)
+    i=j=0
 
-    merge_two_sorted_lists(left, right, arr)
-
-def merge_two_sorted_lists(a,b,arr):
-    len_a = len(a)
-    len_b = len(b)
-
-    i = j = k = 0
-
-    while i < len_a and j < len_b:
-        if a[i] <= b[j]:
-            arr[k] = a[i]
-            i+=1
+    while i < left and j < right:
+        if l[i] < g[j] :
+            sorted_list.append(l[i])
+            i += 1
         else:
-            arr[k] = b[j]
-            j+=1
-        k+=1
-
-    while i < len_a:
-        arr[k] = a[i]
-        i+=1
-        k+=1
-
-    while j < len_b:
-        arr[k] = b[j]
+            sorted_list.append(g[j])
+            j += 1
+    while i < left:
+        sorted_list.append(l[i])
+        i += 1
+    while j < right:
+        sorted_list.append(g[j])
         j+=1
-        k+=1
+    return sorted_list
 
-if __name__ == '__main__':
-    test_cases = [
-        [10, 3, 15, 7, 8, 23, 98, 29],
-        [],
-        [3],
-        [9,8,7,2],
-        [1,2,3,4,5]
-    ]
-
-    for arr in test_cases:
-        merge_sort(arr)
-        print(arr)
+a=[6,5,1,2,10,8]
+print(merge_sort(a))
