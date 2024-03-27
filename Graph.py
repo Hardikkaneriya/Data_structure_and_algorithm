@@ -41,3 +41,20 @@ def dfs_rec(graph,start):
 
 dfs_rec(graph,10)
 dfs_itr(graph,10)
+
+
+
+#BFS (BREADTH FIRST SEARCH) 
+graph = { 10 : [20,30,40,50],
+         20:[500],500:[1000],100:[],200:[],1000:[],30:[100] ,40:[200],50:[60],60:[70],70:[]}
+
+def bfs_itr(graph,start):
+    queue=[start]
+    while queue:
+        cur= queue.pop()
+        print(cur, end=" ")
+        for i in graph[cur]:
+            queue.insert(0,i)
+
+
+bfs_itr(graph,10)
