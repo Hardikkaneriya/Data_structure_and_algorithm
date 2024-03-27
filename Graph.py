@@ -58,3 +58,31 @@ def bfs_itr(graph,start):
 
 
 bfs_itr(graph,10)
+
+
+# code to check if given graph has a path from start to end for a given path or not
+graph = { 
+    100: [10],
+    10:[20],
+    20:[30],
+    30:[40,60,70],
+    40:[50],
+    50:[60],
+    60:[],
+    70:[],
+    500:[40]
+}
+
+def path_or_not(graph,start,end):
+    stack=[start]
+    
+    while stack:
+        cur= stack.pop()
+        for i in graph[cur]:
+            if i == end :
+                return True
+            stack.append(i)
+            print(stack)
+    return False
+
+path_or_not(graph,100,500)
