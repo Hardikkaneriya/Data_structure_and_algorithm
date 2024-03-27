@@ -18,7 +18,7 @@ graph(edges)
 #LINK TO UNDERSTAND DFS AND BFS 
 # https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/
 
-#DFS with iterative method and recursive method
+#DFS (DEPTH SERACH FIRST) with iterative method and recursive method
 graph = { 10 : [20,30,40,50],
          20:[], 30:[] ,40:[],50:[60],60:[70],70:[]}
 
