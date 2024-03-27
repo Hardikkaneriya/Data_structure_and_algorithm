@@ -15,7 +15,8 @@ def graph(edges):
 edges=[['i','j'],['i','k'],['l','m'],['k','m']]
 graph(edges)
         
-
+#LINK TO UNDERSTAND DFS AND BFS 
+# https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/
 
 #DFS with iterative method and recursive method
 graph = { 10 : [20,30,40,50],
