@@ -22,8 +22,8 @@ def selection_sort(l):
     print(l)
 selection_sort(l)
 
-#quick sorting --> very efficient sorting algorithm
-#time complexity O(nlog(n))
+#quick sorting 
+#time complexity O(n * 2) in worst case but in average case it is O(nlog(n))
 
 l=[6,5,1,2,10,8]
 def quick_sort(l):
