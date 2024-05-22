@@ -99,3 +99,32 @@ def path_or_not_bfs(graph,start,end):
 
 print(path_or_not_dfs(graph,100,500))
 print(path_or_not_bfs(graph,100,500))
+
+
+
+#### when there is a non directed graph given and we need to find if path is present or not then we need to implment visited set to exclude 
+#### already visited elements
+
+nondirected_graph = { 'a':['b','c'] , 'b':['d','f','a'] , 'c':['a'] , 'd':['b','g','i'] , 'e':['f','h'] , 'f':['b','e'] ,
+                      'g':['d','h'] , 'h':['e','g'] , 'i':['d']}
+
+
+
+start = 'a'
+end = 'z'
+stack = [start]
+visited = set()
+def dfs_path(graph):
+    while stack:
+        cur = stack.pop()
+        print(cur)
+        if cur not in visited:
+            if cur == end :
+                return True
+            visited.add(cur)
+        else :
+            continue
+        for i in nondirected_graph[cur]:
+            stack.append(i)
+    return False
+print(dfs_path(graph))
