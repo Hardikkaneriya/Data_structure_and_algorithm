@@ -33,7 +33,7 @@ def dfs_itr(graph,start):
 
 def dfs_rec(graph,start):
     print(start , end=' ')
-    if len(graph[start]==0):
+    if len(graph[start])==0:
         return
     for i in graph[start]:
         dfs_rec(graph,i)
