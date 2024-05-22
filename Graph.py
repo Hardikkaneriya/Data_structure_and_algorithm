@@ -131,18 +131,17 @@ print(dfs_path(graph))
 
 #recursive approach
 def dfs_path_rec(graph,start):
-    if start not in visited:
-        if start == end :
-            return True
-        visited.add(start)
-    else:
-        return False
+    if start == end :
+        return True
+    visited.add(start)
     for i in graph[start]:
-       if dfs_path_rec(graph , i) == True :
-           return True
+       if i not in visited:
+            if dfs_path_rec(graph , i) == True :
+                return True
     return False
 
 start = 'a'
-end = 'z'
+end = 'g'
 visited= set()
 print(dfs_path_rec(nondirected_graph,start))
+
