@@ -145,3 +145,37 @@ end = 'g'
 visited= set()
 print(dfs_path_rec(nondirected_graph,start))
 
+# ========== code to find the province (no of separated graphs when number of nodes and edges are given ========
+#here we need to find the number of provinces (number of separate graphs)
+
+n = 6
+edges = [(1,2) ,(1,3) ,(4,5) ]
+
+graph = { i : [] for i in range(1,n+1)}
+print(graph)
+
+for i,j in edges :
+    graph[i].append(j)
+    graph[j].append(i)
+print(graph)
+
+visited = set()
+cnt = 0
+def calculate_no_of_provinces(graph,start , visited ):
+    print(start)
+    if start in visited:
+        return False
+    visited.add(start)
+    for i in graph[start]:
+        calculate_no_of_provinces(graph, i , visited )
+    return True
+
+
+
+
+for i in range(1,n+1):
+    if i not in visited:
+        cnt += 1
+    calculate_no_of_provinces(graph,i , visited )
+print('count' , cnt)
+
