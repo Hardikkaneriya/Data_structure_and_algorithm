@@ -128,3 +128,21 @@ def dfs_path(graph):
             stack.append(i)
     return False
 print(dfs_path(graph))
+
+#recursive approach
+def dfs_path_rec(graph,start):
+    if start not in visited:
+        if start == end :
+            return True
+        visited.add(start)
+    else:
+        return False
+    for i in graph[start]:
+       if dfs_path_rec(graph , i) == True :
+           return True
+    return False
+
+start = 'a'
+end = 'z'
+visited= set()
+print(dfs_path_rec(nondirected_graph,start))
