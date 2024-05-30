@@ -1,3 +1,56 @@
+############### simple method ###############################
+class BinaryTree:
+    def __init__(self, data):
+        self.data= data
+        self.left = None
+        self.right = None
+
+    def insert_node(self, data):
+        if data < self.data :
+            if self.left:
+                self.left.insert_node(data)
+            else:
+                self.left= BinaryTree(data)
+        else:
+            if self.right:
+                self.right.insert_node(data)
+            else:
+                self.right= BinaryTree(data)
+
+    def inorder_printTree(self):
+        if self.left:
+            self.left.inorder_printTree()
+        print(self.data, end=' ')
+        if self.right:
+            self.right.inorder_printTree()
+
+
+    def pre_order_printTree(self):
+        print(self.data, end=' ')
+        if self.left:
+            self.left.pre_order_printTree()
+        if self.right:
+            self.right.pre_order_printTree()
+
+    def post_order_printTree(self):
+        if self.left:
+            self.left.post_order_printTree()
+        if self.right:
+            self.right.post_order_printTree()
+        print(self.data, end=' ')
+
+if __name__ == "__main__":
+    l= BinaryTree(5)
+    l.insert_node(10)
+    l.insert_node(2)
+    l.insert_node(1)
+    l.insert_node(15)
+    print('inorder',l.inorder_printTree())
+    print('preorder',l.pre_order_printTree())
+    print('postorder',l.post_order_printTree())
+
+
+##################another method ############################
 class Node:
     def __init__(self, data):
         self.data = data
