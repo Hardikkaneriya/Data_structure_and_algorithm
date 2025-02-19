@@ -107,7 +107,7 @@ def winner(hand_1, hand_2):
     if result1 > result2:
         return "hand_1 is a winner"
     elif result1== result2:
-            print('dfd')            
+            print('this is yet to be implemented')            
     else:
         return "hand_2 is a winner"
 
