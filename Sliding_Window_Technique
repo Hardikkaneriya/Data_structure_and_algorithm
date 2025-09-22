@@ -1,0 +1,110 @@
+________________________________________
+🔹 1. Fixed Size Sliding Window
+👉 In fixed size, the window is always exactly k.
+We move j forward, and then:
+•	Case 1: j - i + 1 < k
+→ Window is smaller than k, so just expand (j += 1).
+•	Case 2: j - i + 1 == k
+→ Window reached size k.
+→ Process/store answer.
+→ Before sliding, remove the effect of arr[i] and move left pointer (i += 1, j += 1).
+✅ No need for j - i + 1 > k because we never allow the window to exceed k.
+________________________________________
+Fixed-size Template:
+
+while j < n:
+    # expand with arr[j]
+
+    if j - i + 1 < k:
+        j += 1
+
+    elif j - i + 1 == k:
+        # process window
+        result = max(result, window_value)
+
+        # shrink
+        window_value -= arr[i]
+        i += 1
+        j += 1
+________________________________________
+🔹 2. Variable Size Sliding Window
+👉 In variable size, window can grow and shrink dynamically.
+We expand j first and check condition.
+Now we have 3 cases:
+•	Case 1: j - i + 1 < k
+→ Just keep expanding (similar to fixed window).
+•	Case 2: j - i + 1 == k
+→ Window is valid, process/store answer.
+•	Case 3: j - i + 1 > k (extra condition for variable window!)
+→ Window is too large.
+→ Shrink from left (i += 1) until condition becomes valid again (<= k).
+👉 This “shrink while invalid” loop is what makes variable window powerful.
+________________________________________
+Variable-size Template:
+
+while j < n:
+    # expand window with arr[j]
+
+    if condition is valid:
+        # store result
+        result = max(result, j - i + 1)   # or min()
+
+    while condition is invalid:
+        # shrink window
+        # remove arr[i] from window
+        i += 1
+
+    j += 1
+________________________________________
+🔹 Intuition Difference
+•	Fixed size:
+You don’t let window grow beyond k.
+You only check < k and == k.
+•	Variable size:
+You let window grow but then shrink if it exceeds limit (or condition breaks).
+So here you check < k, == k, and importantly > k.
+________________________________________
+🔹 Example 1: Fixed Size (Max Sum Subarray of size k)
+arr = [2, 1, 5, 1, 3, 2]
+k = 3
+i = j = 0
+curr_sum = 0
+max_sum = float("-inf")
+
+while j < len(arr):
+    curr_sum += arr[j]
+
+    if j - i + 1 < k:
+        j += 1
+
+    elif j - i + 1 == k:
+        max_sum = max(max_sum, curr_sum)
+        curr_sum -= arr[i]
+        i += 1
+        j += 1
+
+print(max_sum)  # 9
+________________________________________
+🔹 Example 2: Variable Size (Longest Substring with ≤ K unique chars)
+from collections import defaultdict
+
+s = "aabacbebebe"
+k = 3
+i = 0
+freq = defaultdict(int)
+max_len = 0
+
+for j in range(len(s)):
+    freq[s[j]] += 1
+
+    while len(freq) > k:   # shrink when > k
+        freq[s[i]] -= 1
+        if freq[s[i]] == 0:
+            del freq[s[i]]
+        i += 1
+
+    # valid window (<= k unique chars)
+    max_len = max(max_len, j - i + 1)
+
+print(max_len)  # 7 ("cbebebe")
+
